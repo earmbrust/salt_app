@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>TrasacTrade</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="apple-touch-icon" href="icon.png">
+		<!-- Place favicon.ico in the root directory -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" integrity="sha256-e22BQKCF7bb/h/4MFJ1a4lTRR2OuAe8Hxa/3tgU5Taw=" crossorigin="anonymous" />
+	</head>
+	<body>
+		<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="/images/logo_grayscale.png" alt="TransacTrade"></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="/login">Log In</a></li>
+			</ul>
+			<ul id="nav-mobile" class="sidenav">
+				<li><a href="#">Navbar Link</a></li>
+			</ul>
+			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<% if ( typeof message !== 'undefined' && message ) { %>
+    	<script type="text/javascript">Materialize.toast('<%= message %>', 4000);</script>
+	<% } %>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br><br>
+			<h1 class="header center orange-text">Fee Free Trading</h1>
+			<div class="row center">
+				<h5 class="header col s12 light">Start your trading journey now.</h5>
+			</div>
+			<div class="row center">
+				<a href="/login" id="download-button" class="btn-large waves-effect waves-light orange">Get Started for Free</a>
+			</div>
+			<br><br>
+		</div>
+	</div>
+	<div class="container">
+		<div class="section">
+			<!--   Icon Section   -->
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">Buy with Bitcoin</i></h2>
+						<h5 class="center">Simplify purchasing</h5>
+						<p class="light">Take the guesswork out of buying and selling altcoins, like Dogecoin, by using a ctyptocurrency you know and trust.</p>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">Simple Trading</i></h2>
+						<h5 class="center">Trade any time, anywhere.</h5>
+						<p class="light">Access your portfolio from anywhere in the world (where applicable local laws allow), and trade with other users globe-wide.</p>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">Fast and Easy</i></h2>
+						<h5 class="center">Industry Leading Turnaround</h5>
+						<p class="light">Rest assured that you will always know when your transaction will complete and when you will receive your payout.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br>
+	</div>
+	<footer class="page-footer blue">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Company Bio</h5>
+					<p class="grey-text text-lighten-4">We are a team of cryptocurrency enthusiasts looking to create a way of easily and securely trading cryptocurrencies.</p>
+				</div>
+				<% /*<div class="col l3 s12">
+					<h5 class="white-text">Settings</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Link 1</a></li>
+						<li><a class="white-text" href="#!">Link 2</a></li>
+						<li><a class="white-text" href="#!">Link 3</a></li>
+						<li><a class="white-text" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+				<div class="col l3 s12">
+					<h5 class="white-text">Connect</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Link 1</a></li>
+						<li><a class="white-text" href="#!">Link 2</a></li>
+						<li><a class="white-text" href="#!">Link 3</a></li>
+						<li><a class="white-text" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+				*/%>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				Made by <a class="orange-text text-lighten-3" href="https://eldenarmbrust.com">Elden Armbrust</a>
+			</div>
+		</div>
+	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" integrity="sha256-ffw+9zwShMev88XNrDgS0hLIuJkDfXhgyLogod77mn8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" integrity="sha256-uWtSXRErwH9kdJTIr1swfHFJn/d/WQ6s72gELOHXQGM=" crossorigin="anonymous"></script>
+</body>
+</html>

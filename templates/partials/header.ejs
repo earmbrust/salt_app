@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>TransacTrade - Dashboard</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="apple-touch-icon" href="icon.png">
+		<!-- Place favicon.ico in the root directory -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" integrity="sha256-e22BQKCF7bb/h/4MFJ1a4lTRR2OuAe8Hxa/3tgU5Taw=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="/styles/site.min.css" />
+	</head>
+	<body>
+		<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">TransacTrade</a>
+			<ul class="right hide-on-med-and-down">
+				<li>Balance $<span id="money"><%= Number(user.money).toFixed(8).replace(/\.?0+$/,"") %>USD</span></li>
+				<li><a href="/logout">Log Out</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<% if ( typeof message !== 'undefined' && message ) { %>
+    	<script type="text/javascript">Materialize.toast('<%= message %>', 4000);</script>
+	<% } %>

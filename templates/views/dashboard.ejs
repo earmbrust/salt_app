@@ -1,0 +1,137 @@
+<%- include ../partials/header.ejs %>
+
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+    <table class="striped prices">
+      <thead>
+        <tr>
+          <th class="coin">Coin</th>
+          <th class="symbol">Symbol</th>
+          <th class="usd">USD</th>
+          <th class="btc">BTC</th>
+          <th class="owned">Owned</th>
+          <th class="action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        currencies.forEach(function (currency, index) {
+          if (currency.crypto === true) {
+        %>
+        <tr>
+          <td><%= currency.title %></td>
+          <td><%= currency.symbol %></td>
+          <td>$<%= Number(currency.rateToUSD).toFixed(8).replace(/\.?0+$/,"") %></td>
+          <td><%= Number(currency.rateToBTC).toFixed(8).replace(/\.?0+$/,"") %></td>
+          <td><%= owned[currency.symbol] %></td>
+          <td><button data-target="buy<%= currency.symbol %>" class="btn modal-trigger green">Buy</button><button data-target="sell<%= currency.symbol %>" class="btn modal-trigger red">Sell</button></td>
+        </tr>
+        <% 
+          }
+        });
+        %>
+      </tbody>
+    </table>
+  </div>
+  <br><br>
+</div>
+<% currencies.forEach(function (currency, index) { %>
+<div id="buy<%= currency.symbol%>" class="modal buy<%= currency.symbol === "BTC" ? "BTC" : "CRYPTO" %>">
+  <div class="modal-content">
+    <h4>Buy <%= currency.title %></h4>
+    <% if (currency.symbol === "BTC") {%>
+    <form class="col s12 buyForm<%= currency.symbol%>">
+      <div class="row">
+        <div class="input-field col s4">
+          <input name="cash" type="text" value="<%= user.money %>" readonly>
+          <label for="cash">Cash Available</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="amount" type="number" value="0" class="validate" min="0" max="<%= Math.floor(user.money / currency.rateToUSD); %>">
+          <label for="amount"><%= currency.title %> to Buy</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="cost" type="number" value="0" readonly>
+          <label for="cost">Purchase Cost</label>
+        </div>
+      </div>
+      <input name="type" type="hidden" value="<%= currency.symbol%>">
+      <input type="hidden" name="rate" value="<%= currency.rateToUSD %>">
+    </form>
+    <% } else { %>
+    <form class="col s12 buyFormCrypto">
+      <div class="row">
+        <div class="input-field col s4">
+          <input name="cash" type="text" value="<%= owned.BTC %>" readonly>
+          <label for="cash">Bitcoin Available</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="amount" type="number" value="0" class="validate" min="0" max="<%= owned.BTC %>">
+          <label for="amount">Bitcoin To Trade</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="receive" type="number" value="0" readonly>
+          <label for="receive"><%= currency.title %> To Receive</label>
+        </div>
+      </div>
+      <input name="type" type="hidden" value="<%= currency.symbol %>">
+      <input type="hidden" name="rate" value="<%= currency.rateToBTC %>">
+    </form>
+    <% } %>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="waves-effect waves-green btn green agree">Agree</a>
+    <a href="#!" class="waves-effect waves-green btn green cancel">Cancel</a>
+  </div>
+</div>
+<div id="sell<%= currency.symbol%>" class="modal sell<%= currency.symbol === "BTC" ? "BTC" : "CRYPTO" %>">
+  <div class="modal-content">
+    <h4>Sell <%= currency.title %></h4>
+    <% if (currency.symbol === "BTC") {%>
+    <form class="col s12 sellFormBTC">
+      <div class="row">
+        <div class="input-field col s4">
+          <input name="cash" type="text" value="<%= owned[currency.symbol] %>" readonly>
+          <label for="cash">Bitcoin Available</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="amount" type="number" value="0" class="validate" min="0" max="<%= owned[currency.symbol] %>">
+          <label for="amount">Bitcoin to Sell</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="receive" type="number" value="0" readonly>
+          <label for="receive">USD to Receive</label>
+        </div>
+      </div>
+      <input name="type" type="hidden" value="<%= currency.symbol%>">
+      <input type="hidden" name="rate" value="<%= currency.rateToUSD %>">
+    </form>
+    <% } else { %>
+    <form class="col s12 sellFormCrypto">
+      <div class="row">
+        <div class="input-field col s4">
+          <input name="cash" type="text" value="<%= owned[currency.symbol] %>" readonly>
+          <label for="cash"><%= currency.title %> Available</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="amount" type="number" value="0" class="validate" min="0" max="<%= owned[currency.symbol] %>">
+          <label for="amount"><%= currency.title %> To Trade</label>
+        </div>
+        <div class="input-field col s4">
+          <input name="receive" type="number" value="0" readonly>
+          <label for="receive">Bitcoin To Receive</label>
+        </div>
+      </div>
+      <input name="type" type="hidden" value="<%= currency.symbol%>">
+      <input type="hidden" name="rate" value="<%= currency.rateToBTC %>">
+    </form>
+    <% } %>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="waves-effect waves-green btn green agree">Agree</a>
+    <a href="#!" class="waves-effect waves-green btn green cancel">Cancel</a>
+  </div>
+</div>
+<% }); %>
+<%- include ../partials/footer.ejs %>
